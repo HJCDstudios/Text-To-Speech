@@ -6,7 +6,6 @@
 <meta name="description" content="A simple Text To Speech or tts web application">
 <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1">
 <meta http-equiv = "Content-Type" content = "text/html; charset = utf-8">
-<link rel="stylesheet" href="https://hjcdstudios.github.io/style.css">
 </head>
 <body onLoad="OnStart()">
 <center>
@@ -31,6 +30,13 @@ input[type="text"] {
 input[type="text"]:hover {
   border-color: lime;
 }
+.f {
+  font-family: sans-serif;
+}
+.theme {
+  color: rgb(0,150,255);
+}
+
 </style>
 <script type="text/javascript">
 function ad() {
@@ -44,14 +50,14 @@ function ad() {
     speech.pitch = pitch;
     speech.rate = rate;
     speech.voice = voice;
-  window.speechSynthesis.speak(speech);
+    window.speechSynthesis.speak(speech);
   }
 }
 function OnStart() {
   var data = new SpeechSynthesis();
   for(var i = 0; i < data.getVoices().length; i++) {
      var r1 = data.getVoices[i];
-     document.getElementById("ae").innerHTML += '<optionsm value="' + r1 + '">' + r1 + '</option>\n';
+     document.getElementById("ae").innerHTML += '<option value="' + r1 + '">' + r1 + '</option>\n';
   }
 }
 </script>
