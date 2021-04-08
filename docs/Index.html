@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>Text To Speech</title>
+<meta name="title" content="Text To Speech">
+<meta name="keywords" content="Online Text To Speech,Text To Speech,tts,online tts,free text to speech,free tts">
+<meta name="description" content="A simple Text To Speech or tts web application">
+<meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1">
+<meta http-equiv = "Content-Type" content = "text/html; charset = utf-8">
+<link rel="stylesheet" href="https://hjcdstudios.github.io/style.css">
+</head>
+<body>
+<center>
+<input type="text" placeholder="Text" id="aa">
+<br>
+<b class="f theme">Rate<input type="text" value="1" id="ab"></b>
+<br>
+<b class="f theme">Pitch<input type="text" value="1" id="ac"></b>
+<br>
+<input type="button" value="Speak" class="round-responsive-theme" onClick="ad();">
+</center>
+<script type="text/javascript">
+function ad() {
+  var text = document.getElementById("aa").value;
+  var rate = document.getElementById("ab").value;
+  var pitch = document.getElementById("ac").value;
+  var speech = new SpeechSynthesisUtterance();
+  speech.text = text;
+  speech.pitch =pitch;
+  speech.rate = rate;
+  window.speechSynthesis.speak(speech);
+}
+</script>
+</body>
+</html>
