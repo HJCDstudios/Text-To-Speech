@@ -8,7 +8,7 @@
 <meta http-equiv = "Content-Type" content = "text/html; charset = utf-8">
 <link rel="stylesheet" href="https://hjcdstudios.github.io/style.css">
 </head>
-<body>
+<body onLoad="OnStart()">
 <center>
 <input type="text" placeholder="Text" id="aa">
 <br>
@@ -16,18 +16,42 @@
 <br>
 <b class="f theme">Pitch<input type="text" value="1" id="ac"></b>
 <br>
+<b class="f theme">Voice<input type="select" id="ae"></select>
+<br>
 <input type="button" value="Speak" class="round-responsive-theme" onClick="ad();">
 </center>
+<style type="text/css">
+input[type="text"] {
+  border-radius: 5px;
+  border-color: blue;
+  font-size: 19px;
+  transition-length: 0.4;
+}
+input[type="text"]:hover {
+  border-color: lime;
+}
+</style>
 <script type="text/javascript">
 function ad() {
   var text = document.getElementById("aa").value;
-  var rate = document.getElementById("ab").value;
-  var pitch = document.getElementById("ac").value;
-  var speech = new SpeechSynthesisUtterance();
-  speech.text = text;
-  speech.pitch =pitch;
-  speech.rate = rate;
+  if (text.length >= 1) {
+    var rate = document.getElementById("ab").value;
+    var pitch = document.getElementById("ac").value;
+    var speech = new SpeechSynthesisUtterance();
+    var voice = document.getElementById("ae").value;
+    speech.text = text;
+    speech.pitch = pitch;
+    speech.rate = rate;
+    speech.voice = voice;
   window.speechSynthesis.speak(speech);
+  }
+}
+function OnStart() {
+  var data = new SpeechSynthesis();
+  for(var i = 0; i < data.getVoices().length; i++) {
+     var r1 = data.getVoices[i];
+     document.getElementById("ae").innerHTML += '<optionsm value="' + r1 + '">' + r1 + '</option>\n';
+  }
 }
 </script>
 </body>
