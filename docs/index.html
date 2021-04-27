@@ -1,68 +1,26 @@
+<!DOCTYPE html>
 <html>
-<head>
-<title>Text To Speech</title>
-<meta name="title" content="Text To Speech">
-<meta name="keywords" content="Online Text To Speech,Text To Speech,tts,online tts,free text to speech,free tts">
-<meta name="description" content="A simple Text To Speech or tts web application">
-<meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1">
-<meta http-equiv = "Content-Type" content = "text/html; charset = utf-8">
-</head>
-<body onLoad="OnStart()">
-<center>
-<input type="text" placeholder="Text" id="aa">
-<br>
-<b class="f theme 19px">Rate<input type="text" value="1" id="ab"></b>
-<br>
-<b class="f theme 19px">Pitch<input type="text" value="1" id="ac"></b>
-<br>
-<b class="f theme 19px">Voice<select id="ae"></select></b>
-<br>
-<input type="button" value="Speak" class="round-responsive-theme" onClick="ad();">
-</center>
-<style type="text/css">
-input[type="text"] {
-  border-radius: 5px;
-  border-color: blue;
-  font-size: 19px;
-  transition-length: 0.4;
-  text-align: center;
-}
-input[type="text"]:hover {
-  border-color: lime;
-}
-.f {
-  font-family: sans-serif;
-}
-.19px {
-  font-size: 19px;
-}
-.theme {
-  color: rgb(0,150,255);
-}
-
-</style>
-<script type="text/javascript">
-function ad() {
-  var text = document.getElementById("aa").value;
-  if (text.length >= 1) {
-    var rate = document.getElementById("ab").value;
-    var pitch = document.getElementById("ac").value;
-    var speech = new SpeechSynthesisUtterance();
-    var voice = document.getElementById("ae").value;
-    speech.text = text;
-    speech.pitch = pitch;
-    speech.rate = rate;
-    speech.voice = voice;
-    window.speechSynthesis.speak(speech);
-  }
-}
-function OnStart() {
-  var data = new SpeechSynthesis();
-  for(var i = 0; i < data.getVoices().length; i++) {
-     var r1 = data.getVoices[i];
-     document.getElementById("ae").innerHTML += '<option value="' + r1 + '">' + r1 + '</option>\n';
-  }
-}
-</script>
-</body>
+  <head>
+    <title>
+      Text To Speech
+    </title>
+    <meta name = "title" content = "Text To Speech">
+    <meta name = "description" content = "Free online text to speech">
+    <meta name = "keywords" content = "TTS,Text To Speech">
+    <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1">
+    <link rel = "stylesheet" type = "text/css" href = "../style.css">
+  </head>
+  <script type = "text/javascript" src = "TTS.min.js">
+  </script>
+  <body onload = "OnStart()">
+    <center>
+      <input type = "text" placeholder = "Text" id = "Text" class = "txt_light center">
+      <br>
+      <input type = "number" placeholder = "Rate" id = "Rate" class = "txt_light-s center">
+      <br>
+      <input type = "number" placeholder = "Pitch" id = "Pitch" class = "txt_light-s center">
+      <br><br>
+      <input type = "button" value = "Speak" class = "btn_light" onclick = "Speak()">
+    </center>
+  </body>
 </html>
