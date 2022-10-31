@@ -1,2 +1,2 @@
 # Text-To-Speech
-A simple Text to speech app
+A simple website that converts Text to speech
